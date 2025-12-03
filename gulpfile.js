@@ -11,13 +11,23 @@ const webp = require('gulp-webp');
 const avif = require('gulp-avif');
 const newer = require('gulp-newer');
 const ttf2woff2 = require('gulp-ttf2woff2');
-const svgmin = require('gulp-svgmin');
+const include = require('gulp-include');
+const svgstore = require('gulp-svgstore');
 
 
 function sprites() {
   return src('app/images/sprite/*.svg')
-    .pipe(svgmin())
+    .pipe(svgstore())
     .pipe(dest('app/images'))
+}
+
+function pages() {
+  return src('app/pages/*.html')
+    .pipe(include({
+      includePaths: 'app/components'
+    }))
+    .pipe(dest('app'))
+    .pipe(browserSync.stream())
 }
 
 function fonts() {
@@ -30,20 +40,20 @@ function images() {
   return src(['app/images/src/*.*', '!app/images/src/*.svg'])
     .pipe(newer('app/images'))
     .pipe(avif({ quality: 50 }))
-  
+
     .pipe(src('app/images/src/*.*'))
     .pipe(newer('app/images'))
     .pipe(webp())
-  
+
     .pipe(src('app/images/src/*.*'))
     .pipe(newer('app/images'))
     .pipe(imagemin())
-  
+
     .pipe(dest('app/images'))
 }
 
 function styles() {
-  return src('app/scss/style.scss')
+  return src('app/scss/*.scss')
     .pipe(autoprefixer())
     .pipe(concat('style.min.css'))
     .pipe(scss({
@@ -55,6 +65,7 @@ function styles() {
 
 function scripts() {
   return src([
+    'node_modules/mixitup/dist/mixitup.min.js',
     'node_modules/swiper/swiper-bundle.js',
     'app/js/main.js'
   ])
@@ -70,10 +81,11 @@ function watching() {
       baseDir: 'app/'
     }
   });
-  watch(['app/scss/style.scss'], styles); 
+  watch(['app/scss/*.scss'], styles);
   watch(['app/js/main.js'], scripts);
   watch(['app/images/src'], images);
   watch(['app/images/sprite'], sprites);
+  watch(['app/components/*', 'app/pages/*'], pages);
   watch(['app/*.html']).on('change', browserSync.reload);
 }
 
@@ -85,7 +97,7 @@ function building() {
     'app/js/main.min.js',
     'app/*.html'
   ], { base: 'app' })
-  .pipe(dest('dist'))
+    .pipe(dest('dist'))
 }
 
 function cleanDist() {
@@ -95,13 +107,14 @@ function cleanDist() {
 
 
 exports.styles = styles;
-exports.scripts = scripts; 
-exports.images = images; 
+exports.scripts = scripts;
+exports.images = images;
 exports.fonts = fonts;
+exports.pages = pages;
 exports.sprites = sprites;
 exports.watching = watching;
 exports.building = building;
 exports.cleanDist = cleanDist;
 
 exports.build = series(cleanDist, building);
-exports.default = parallel(styles, images, sprites, scripts, watching);
+exports.default = parallel(styles, images, sprites, scripts, pages, watching);
