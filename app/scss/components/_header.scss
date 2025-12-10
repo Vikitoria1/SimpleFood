@@ -1,0 +1,59 @@
+.header {
+  padding-top: 60px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  &__actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__button {
+    width: 44px;
+    height: 44px;
+    border-radius: 5px;
+    transition: color 0.5s, box-shadow 0.5s, background-color 0.5s;
+
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+      background: rgba(255, 104, 56, 0.1);
+    }
+
+    &:hover {
+      background: $accent;
+    }
+
+    &:active {
+      background: $accent-light-background;
+    }
+  }
+}
+
+
+.menu {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-right: 63px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-left: auto;
+  }
+
+  &__link {
+    color: $third;
+    font-size: 18px;
+
+    &--active {
+      color: $accent;
+    }
+  }
+}

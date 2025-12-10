@@ -9,55 +9,51 @@
   <link rel="shortcut icon" href="images/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <title>Проста їжа</title>
+  <title>Сервіс доставки їжі Сімплфуд</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body id="body">
   <div class="wrapper">
     <header class="header">
-      <div class="container">
-        <div class="header__wrapper">
+      <div class="container header__container">
+        <nav class="menu">
           <a class="logo" href="#body">
-            <img src="images/logo.svg" alt="логотип" width="200" height="39">
+            <img src="images/logo.svg" alt="логотип Сімплфуд" width="200" height="39">
           </a>
-          <div class="header__inner">
-            <nav class="menu">
-              <ul class="menu__list">
-                <li class="menu__item">
-                  <a class="menu__link menu__link--active" href="#">
-                    Головна
-                  </a>
-                </li>
-                <li class="menu__item">
-                  <a class="menu__link" href="#">
-                    Страви
-                  </a>
-                </li>
-                <li class="menu__item">
-                  <a class="menu__link" href="#">
-                    Контакти
-                  </a>
-                </li>
-              </ul>
-            </nav>
-            <ul class="header__actions">
-              <li class="header__actions-item">
-                <a class="header__actions-link" href="#">
-                  <svg width="21" height="21">
-                    <use xlink:href="images/sprite.svg#search"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="header__actions-item">
-                <a class="header__actions-link" href="#">
-                  <svg width="29" height="24">
-                    <use xlink:href="images/sprite.svg#buy-btn"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </div>
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a class="menu__link menu__link--active" href="#">
+                Головна
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">
+                Страви
+              </a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">
+                Контакти
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__actions">
+          <button class="header__button" type="button" aria-label="пошуку">
+            <svg width="21" height="21">
+              <use xlink:href="images/sprite.svg#search"></use>
+            </svg>
+          </button>
+          <button class="header__button" type="button" aria-label="переходу в корзину">
+            <svg width="29" height="24">
+              <use xlink:href="images/sprite.svg#buy-btn"></use>
+            </svg>
+          </button>
         </div>
       </div>
     </header>

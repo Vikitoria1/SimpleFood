@@ -1,27 +1,8 @@
-$color-accent: #363853;
-$color-text: #31352B; 
-$color-bg: #F9FAFF;
-$color-white: #fff;
-$color-orange: #ff6838;
-$color-light-gray: #ececec;
-$color-gray-medium: #c2c2c2;
-
-%rubik-300 {
-    font-family: 'Rubik-Light', sans-serif;
-    font-weight: 300;
-}
-
-%rubik-400 {
-    font-family: 'Rubik-Regular', sans-serif;
-    font-weight: 400;
-}
-
-%rubik-500 {
-    font-family: 'Rubik-Medium', sans-serif;
-    font-weight: 500;
-}
-
-%rubik-italic-400 {
-    font-family: 'Rubik-Italic', sans-serif;
-    font-weight: 400;
-}
+$dark: #363853;
+$third: #31352b;
+$white: #fff;
+$accent: #ff6838;
+$background-main: #F9FAFF;
+$background-secondary: #ececec;
+$light: #c2c2c2; 
+$accent-light-background: #fff2ed;

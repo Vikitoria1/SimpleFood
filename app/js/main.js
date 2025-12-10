@@ -1,5 +1,8 @@
-const mixer = mixitup('.popular__list', {
+const mixer = mixitup('.popular__product-list', {
     selectors: {
-        target: '.popular__item'
+        target: '.popular__product-item'
+    },
+    load: {
+        filter: '.burger'
     }
 });

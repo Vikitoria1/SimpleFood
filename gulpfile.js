@@ -3,23 +3,13 @@ const { src, dest, watch, series, parallel } = require('gulp');
 const browserSync = require('browser-sync').create();
 const scss = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
-const uglify = require('gulp-uglify-es').default;
+const uglify = require('gulp-uglify');
 const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
-const imagemin = require('gulp-imagemin');
-const webp = require('gulp-webp');
-const avif = require('gulp-avif');
-const newer = require('gulp-newer');
-const ttf2woff2 = require('gulp-ttf2woff2');
 const include = require('gulp-include');
-const svgstore = require('gulp-svgstore');
 
 
-function sprites() {
-  return src('app/images/sprite/*.svg')
-    .pipe(svgstore())
-    .pipe(dest('app/images'))
-}
+
 
 function pages() {
   return src('app/pages/*.html')
@@ -28,12 +18,6 @@ function pages() {
     }))
     .pipe(dest('app'))
     .pipe(browserSync.stream())
-}
-
-function fonts() {
-  return src('app/fonts/*.ttf')
-    .pipe(ttf2woff2())
-    .pipe(dest('app/fonts'))
 }
 
 function images() {
@@ -84,7 +68,6 @@ function watching() {
   watch(['app/scss/*.scss'], styles);
   watch(['app/js/main.js'], scripts);
   watch(['app/images/src'], images);
-  watch(['app/images/sprite'], sprites);
   watch(['app/components/*', 'app/pages/*'], pages);
   watch(['app/*.html']).on('change', browserSync.reload);
 }
@@ -108,13 +91,10 @@ function cleanDist() {
 
 exports.styles = styles;
 exports.scripts = scripts;
-exports.images = images;
-exports.fonts = fonts;
 exports.pages = pages;
-exports.sprites = sprites;
 exports.watching = watching;
-exports.building = building;
+// exports.building = building;
 exports.cleanDist = cleanDist;
 
 exports.build = series(cleanDist, building);
-exports.default = parallel(styles, images, sprites, scripts, pages, watching);
+exports.default = parallel(styles, pages, watching);
