@@ -97,4 +97,4 @@ exports.watching = watching;
 exports.cleanDist = cleanDist;
 
 exports.build = series(cleanDist, building);
-exports.default = parallel(styles, pages, watching);
+exports.default = parallel(styles, pages, watching, scripts);
