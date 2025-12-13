@@ -20,23 +20,23 @@
     transition: color 0.5s, box-shadow 0.5s, background-color 0.5s;
 
     &:focus {
-      box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
-      background: rgba(255, 104, 56, 0.1);
+      box-shadow: 0 0 0 2px rgba($accent, 0.7);
+      background-color: rgba(255, 104, 56, 0.1);
     }
 
     &:hover {
-      background: $accent;
+      background-color: $accent;
     }
 
     &:active {
-      background: $accent-light-background;
+      background-color: $accent-light-background;
     }
   }
 }
 
-
 .menu {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-grow: 1;
   margin-right: 63px;
@@ -45,7 +45,6 @@
     display: flex;
     align-items: center;
     gap: 40px;
-    margin-left: auto;
   }
 
   &__link {
